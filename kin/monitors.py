@@ -60,9 +60,9 @@ async def multi_monitor(kin_client: 'KinClient') -> AsyncGenerator[SimplifiedTra
             logger.debug(e)
             continue
 
-        if tx_data.operation.type != OperationTypes.PAYMENT:
-            logger.debug("Non-payment SSE transaction skipped: ", tx_data)
-            continue
+        # if tx_data.operation.type != OperationTypes.PAYMENT:
+            # logger.debug("Non-payment SSE transaction skipped: ", tx_data)
+            # continue
 
         # Will yield twice if both of these are correct. (someone sent to himself) - which it fine
         yield tx_data.source, tx_data
