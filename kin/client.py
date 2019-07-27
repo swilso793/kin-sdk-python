@@ -318,4 +318,4 @@ class KinClient:
 
         :raises: asyncio.TimeoutError: If too much time has passed between events (only if "timeout" is set)
         """
-        return multi_monitor(self, addresses, timeout=timeout)
+        return multi_monitor(self, timeout=timeout)
