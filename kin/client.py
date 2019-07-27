@@ -310,7 +310,7 @@ class KinClient:
         """
         return single_monitor(self, address, timeout=timeout)
 
-    def monitor_accounts_payments(self, addresses: set, timeout: Optional[float] = None) -> AsyncGenerator[SimplifiedTransaction, None]:
+    def monitor_accounts_payments(self, timeout: Optional[float] = None) -> AsyncGenerator[SimplifiedTransaction, None]:
         """Monitor KIN payment transactions related to multiple accounts
 
         :param addresses: the addresses of the accounts to query.
@@ -318,4 +318,4 @@ class KinClient:
 
         :raises: asyncio.TimeoutError: If too much time has passed between events (only if "timeout" is set)
         """
-        return multi_monitor(self, timeout=timeout)
+        return multi_monitor(self)
