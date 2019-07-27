@@ -52,7 +52,9 @@ async def multi_monitor(kin_client: 'KinClient') -> AsyncGenerator[SimplifiedTra
 
     async for tx in sse_client:
         try:
-            tx_data = SimplifiedTransaction(RawTransaction(tx))
+            # tx_data = SimplifiedTransaction(RawTransaction(tx))
+            tx_data = RawTransaction(tx)
+
         except CantSimplifyError:
             logger.debug("SSE transaction couldn't be simplified: ", tx)
             continue
