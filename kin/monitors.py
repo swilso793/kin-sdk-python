@@ -67,4 +67,5 @@ async def multi_monitor(kin_client: 'KinClient') -> AsyncGenerator[SimplifiedTra
             # continue
 
         # Will yield twice if both of these are correct. (someone sent to himself) - which it fine
-        yield tx_data.source, tx_data
+        # yield tx_data.source, tx_data
+        yield tx_data
