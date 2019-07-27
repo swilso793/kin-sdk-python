@@ -56,6 +56,9 @@ async def multi_monitor(kin_client: 'KinClient') -> AsyncGenerator[SimplifiedTra
         except CantSimplifyError:
             logger.debug("SSE transaction couldn't be simplified: ", tx)
             continue
+        except TypeError as e:
+            logger.debug(e)
+            continue
 
         if tx_data.operation.type != OperationTypes.PAYMENT:
             logger.debug("Non-payment SSE transaction skipped: ", tx_data)
