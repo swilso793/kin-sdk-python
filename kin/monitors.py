@@ -40,7 +40,7 @@ async def single_monitor(kin_client: 'KinClient', address: str,
         yield tx_data
 
 
-async def multi_monitor(kin_client: 'KinClient', addresses: set) -> AsyncGenerator[SimplifiedTransaction, None]:
+async def multi_monitor(kin_client: 'KinClient') -> AsyncGenerator[SimplifiedTransaction, None]:
     """
     Monitors a single account for kin payments
 
@@ -62,7 +62,4 @@ async def multi_monitor(kin_client: 'KinClient', addresses: set) -> AsyncGenerat
             continue
 
         # Will yield twice if both of these are correct. (someone sent to himself) - which it fine
-        if tx_data.source in addresses:
-            yield tx_data.source, tx_data
-        if tx_data.operation.destination in addresses:
-            yield tx_data.operation.destination, tx_data
+        yield tx_data.source, tx_data
